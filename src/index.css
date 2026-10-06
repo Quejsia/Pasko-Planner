@@ -1,0 +1,18 @@
+@tailwind base;@tailwind components;@tailwind utilities;
+body{@apply font-body text-pine-deep bg-red min-h-screen;background-image:radial-gradient(circle at 20% 0,#b3282d 0,#8f1d21 45%,#6b1216 100%);background-attachment:fixed}
+h1,h2,h3{@apply font-display}
+.card{@apply bg-paper rounded-3xl p-5 shadow-xl shadow-black/25 border-2 border-gold/60}
+.btn{@apply font-display font-bold text-lg rounded-full px-6 py-3 min-h-[48px] active:scale-95 transition disabled:opacity-50 focus-visible:outline focus-visible:outline-4 focus-visible:outline-gold}
+.inp{@apply w-full rounded-2xl border-2 border-pine/30 bg-white px-4 py-3 text-base focus:outline-none focus:border-gold}
+@keyframes swing{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+.parol{transform-origin:top center;animation:swing 4s ease-in-out infinite}
+.gift{overflow:visible}
+.lid{transition:transform .7s cubic-bezier(.3,1.6,.5,1);transform-box:fill-box;transform-origin:left bottom}
+.open .lid{transform:translateY(-18px) rotate(-12deg)}
+.shake{animation:wob 1.6s ease-in-out infinite}
+@keyframes wob{0%,100%{transform:rotate(0)}10%,30%{transform:rotate(-4deg)}20%,40%{transform:rotate(4deg)}50%{transform:rotate(0)}}
+.pop{animation:pop .6s .35s both cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{from{transform:scale(.3);opacity:0}to{transform:scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.parol,.shake,.pop,.lid{animation:none;transition:none}}
+
+:root{color-scheme:only light}
