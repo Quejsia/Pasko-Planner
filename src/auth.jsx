@@ -13,6 +13,7 @@ export function Login(){
   <input className="inp" type="password" placeholder="Password (6+ characters)" autoComplete={up?'new-password':'current-password'} minLength={6} value={pw} onChange={e=>setP(e.target.value)} required/>
   {err&&<p role="alert" className="bg-red/10 text-red font-bold rounded-2xl px-4 py-2">{err}</p>}{msg&&<p className="font-bold text-pine">{msg}</p>}
   <button disabled={busy} className="btn bg-gold text-red-deep w-full">{busy?'Sandali lang…':up?'Mag-sign up':'Mag-login'}</button>
+  <p className="text-center text-xs">Sa paggamit ng app, sumasang-ayon ka sa <a className="underline font-bold" href="#/terms">Terms</a> at <a className="underline font-bold" href="#/privacy">Privacy Policy</a>.</p>
   <button type="button" className="underline font-bold w-full" onClick={()=>setUp(!up)}>{up?'May account na ako':'Wala pang account? Mag-sign up'}</button></form>}
 export function Home(){
  const [l,setL]=useState();useEffect(()=>{sb.rpc('my_groups').then(({data})=>setL(data||[]))},[])
