@@ -1,3 +1,14 @@
 node_modules
-.env
 dist
+.vercel
+
+# Secrets: never commit these. Only .env.example is allowed.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+supabase/.temp
+supabase/.env*
+
+.DS_Store

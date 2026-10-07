@@ -129,7 +129,7 @@ export function ShareCard({code}){
   x.fillStyle='#f6dc96';x.font='700 44px "Baloo 2",system-ui,sans-serif';x.fillText('Merry Christmas and Happy New Year!',W/2,1150)
   x.fillStyle='#f6dc96';x.font='600 36px Nunito,system-ui,sans-serif';x.fillText('Made with AppBuildersPH',W/2,1240);setOk(true)})()},[g])
  const blob=()=>new Promise(r=>ref.current.toBlob(r,'image/png'))
- const dl=async()=>{const b=await blob();const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`pasko-${code}.png`;a.click()}
+ const dl=async()=>{const b=await blob();const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`pasko-${code}.png`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
  const share=async()=>{const b=await blob();const f=new File([b],'pasko.png',{type:'image/png'});if(navigator.canShare?.({files:[f]})){try{await navigator.share({files:[f],text:'Our Pasko is set! 🎄'})}catch{}}else dl()}
  if(g===null)return <Missing/>
  return <div className="card space-y-3 text-center">{g===undefined&&<p>Sandali lang…</p>}<canvas ref={ref} width={1080} height={1350} className={'w-full rounded-2xl '+(g?'':'hidden')}/>
