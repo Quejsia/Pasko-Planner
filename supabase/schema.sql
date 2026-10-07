@@ -26,7 +26,7 @@ declare c text; g groups; begin
  if coalesce(trim(p_name),'')='' then raise exception 'NAME_REQUIRED'; end if;
  if p_budget is null or p_budget<=0 then raise exception 'BAD_BUDGET'; end if;
  if p_date is null or p_date<=current_date then raise exception 'BAD_DATE'; end if;
- loop c:=upper(substr(encode(gen_random_bytes(4),'hex'),1,6)); exit when not exists(select 1 from groups where join_code=c); end loop;
+ loop c:=upper(substr(encode(gen_random_bytes(4),'hex'),1,8)); exit when not exists(select 1 from groups where join_code=c); end loop;
  insert into groups(name,budget_php,party_date,join_code,organizer_id,exclusion_names) values(trim(p_name),p_budget,p_date,c,auth.uid(),coalesce(p_pairs,'[]')) returning * into g;
  return json_build_object('join_code',g.join_code); end $$;
 
