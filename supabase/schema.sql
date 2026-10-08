@@ -20,7 +20,7 @@ grant select on assignments to authenticated;
 -- A logged-in user can read ONLY the assignment where they are the giver. Organizer has no special access.
 create policy giver_reads_own on assignments for select to authenticated using (giver_id in (select my_member_ids()));
 
-create function create_group(p_name text,p_budget int,p_date date,p_pairs jsonb default '[]') returns json language plpgsql security definer set search_path=public as $$
+create function create_group(p_name text,p_budget int,p_date date,p_pairs jsonb default '[]') returns json language plpgsql security definer set search_path=public,extensions as $$
 declare c text; g groups; begin
  if auth.uid() is null then raise exception 'NOT_AUTH'; end if;
  if coalesce(trim(p_name),'')='' then raise exception 'NAME_REQUIRED'; end if;

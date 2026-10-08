@@ -1,6 +1,6 @@
 -- Longer join codes: new groups get 8 characters (was 6).
 -- Old 6-character groups keep working. Safe to run more than once.
-create or replace function create_group(p_name text,p_budget int,p_date date,p_pairs jsonb default '[]') returns json language plpgsql security definer set search_path=public as $$
+create or replace function create_group(p_name text,p_budget int,p_date date,p_pairs jsonb default '[]') returns json language plpgsql security definer set search_path=public,extensions as $$
 declare c text; g groups; begin
  if auth.uid() is null then raise exception 'NOT_AUTH'; end if;
  if coalesce(trim(p_name),'')='' then raise exception 'NAME_REQUIRED'; end if;

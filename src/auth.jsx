@@ -10,7 +10,7 @@ export function Login(){
   <button type="button" onClick={google} className="btn bg-white text-pine-deep w-full border-2 border-pine/30">Continue with Google</button>
   <p className="text-center text-sm">o gamitin ang email</p>
   <input className="inp" type="email" placeholder="Email" autoComplete="email" value={email} onChange={e=>setE(e.target.value)} required/>
-  <input className="inp" type="password" placeholder="Password (8+ characters)" autoComplete={up?'new-password':'current-password'} minLength={8} value={pw} onChange={e=>setP(e.target.value)} required/>
+  <input className="inp" type="password" placeholder={up?"Password (8+ characters)":"Password"} autoComplete={up?'new-password':'current-password'} minLength={up?8:undefined} value={pw} onChange={e=>setP(e.target.value)} required/>
   {err&&<p role="alert" className="bg-red/10 text-red font-bold rounded-2xl px-4 py-2">{err}</p>}{msg&&<p className="font-bold text-pine">{msg}</p>}
   <button disabled={busy} className="btn bg-gold text-red-deep w-full">{busy?'Sandali lang…':up?'Mag-sign up':'Mag-login'}</button>
   <p className="text-center text-xs">Sa paggamit ng app, sumasang-ayon ka sa <a className="underline font-bold" href="/terms">Terms</a> at <a className="underline font-bold" href="/privacy">Privacy Policy</a>.</p>
